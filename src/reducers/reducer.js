@@ -18,7 +18,7 @@ export const initalState = {
 const reducer = (state = initalState, action) => {
     switch (action.type) {
         case 'ADD_FEATURE':
-            return state.concat(action.payload)
+            return {...state, car: {...state.car, features: state.car.features.concat(action.payload)}, additionalPrice: state.additionalPrice + action.payload.price}
 
         case 'REMOVE_FEATURE':
             return state.filter(feature => !feature.completed)
