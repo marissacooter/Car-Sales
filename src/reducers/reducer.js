@@ -21,7 +21,7 @@ const reducer = (state = initalState, action) => {
             return {...state, car: {...state.car, features: state.car.features.concat(action.payload)}, additionalPrice: state.additionalPrice + action.payload.price}
 
         case 'REMOVE_FEATURE':
-            return state.filter(feature => !feature.completed)
+            return {...state, car: {...state.car, features: state.car.features.filter(feature => feature.id !== action.payload.id)}, additionalPrice: state.additionalPrice - action.payload.price}
         default:
             return state;
     }
